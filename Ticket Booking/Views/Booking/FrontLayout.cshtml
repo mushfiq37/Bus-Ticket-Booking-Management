@@ -1,0 +1,392 @@
+﻿@model Ticket_Booking.Models.PassengerModel
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+@{
+    ViewBag.Title = "FrontLayout";
+
+    string[] seatName = { "0", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J","K","L","M","N" };
+    string[] seatNumber1 = { "1", "2", "5", "3", "4" };
+    string[] seatNumber2 = { "1", "2", "3", "4" };
+    var l = 0;
+
+    var gender = new SelectList(
+        new List<SelectListItem>
+        {
+            new SelectListItem {Text = "Male", Value = "Male"},
+            new SelectListItem {Text = "Female", Value = "Female"},
+        }, "Value", "Text");
+
+    var nationality = new SelectList(
+    new List<SelectListItem>
+        {
+            new SelectListItem {Text = "Bangladeshi", Value = "Bangladeshi"},
+            new SelectListItem {Text = "Others", Value = "Others"},
+        }, "Value", "Text");
+
+    var payment = new SelectList(
+     new List<SelectListItem>
+        {
+            new SelectListItem {Text = "Cash", Value = "Cash"},
+            new SelectListItem {Text = "Other", Value = "Other"},
+        }, "Value", "Text");
+
+   
+}
+<style>
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+</style>
+
+@section bodypage { 
+
+<body class="bg agileinfo" onload='hide()'>
+    <table style="border-collapse: separate; border-spacing: 30px; ">
+        <tr>
+            <td style="height:610px; border: 2px; margin:20px; padding: 2px; border: double; border: ridge; border-color: #12b7b7">
+                <table style="width:100%; border: 2px; padding: 10px; border-collapse: separate; border-spacing: 10px 20px;table-layout:auto ">
+                    <tr>
+                        <td style="text-align:center">
+                            
+                                <h2>Choose Your Seat</h2>
+                          
+                            
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="text-align:right">
+
+                            <label> DRIVER</label>
+
+                            
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" name="perSeatFare" id="perSeatFare" value="@ViewBag.fare" />
+                <table style="height:400px;padding:2px;">
+
+                    @for (var i = 0; i <= (ViewBag.numberOfSeat / ViewBag.noOfSeatPerRow); i++)
+                    {
+                        <tr>
+                            @for (var j = 0; j < ViewBag.noOfSeatPerRow + 1; j++)
+                            {
+                                if (i < 1)
+                                {
+                                    <td></td>
+                                }
+                                else
+                                {
+                                    if (j == (ViewBag.noOfSeatPerRow / 2) && i < (ViewBag.numberOfSeat / ViewBag.noOfSeatPerRow))
+                                    {
+                                        <td></td>
+
+                                    }
+                                    else
+                                    {
+                                        if (ViewBag.noOfSeatPerRow >= 4)
+                                        {
+                                            <td>
+
+                                                @if (Array.IndexOf(ViewBag.bookedSeats, (seatName[l] + seatNumber1[j]).ToString()) > -1)
+                                                {
+                                                    <input name="selectedSeats" type="button" id="@i@j" onclick="ChangeColor('@i@j')" style="background-color: #f44336; border-radius: 12px; border: none; color: white; box-shadow: none; width: 60px; height: 40px; margin: 3px; " value="@(seatName[l])@(seatNumber1[j])" disabled />
+                                                }
+
+                                                else
+                                                {
+                                                    <input name="selectedSeats" type="button" id="@i@j" onclick="ChangeColor('@i@j')" style="background-color: #4CAF50; border-radius: 12px; border: none; color: white; cursor: pointer; box-shadow: none; width: 60px; height: 40px; margin: 3px; " value="@(seatName[l])@(seatNumber1[j])" />}
+
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                @if (Array.IndexOf(ViewBag.bookedSeats, (seatName[l] + seatNumber2[j]).ToString()) > -1)
+                                                {
+                                                    <input name="selectedSeats" type="button" id="@i@j" onclick="ChangeColor('@i@j')" style="background-color: #f44336; border-radius: 12px; border: none; color: white; box-shadow: none; width: 60px; height: 40px; margin: 3px; " value="@(seatName[l])@(seatNumber2[j])" disabled />
+                                                }
+
+                                                else
+                                                {
+                                                    <input name="selectedSeats" type="button" id="@i@j" onclick="ChangeColor('@i@j')" style="background-color: #4CAF50; border-radius: 12px; border: none; color: white; cursor: pointer; box-shadow: none; width: 60px; height: 40px; margin: 3px; " value="@(seatName[l])@(seatNumber2[j])" />}
+                                            </td>
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+                        </tr>
+                            l++;
+                    }
+
+                </table>
+
+            </td>
+            <td class="" style=" border:ridge ;border-color:#12b7b7;margin:20px;height:680px">
+
+                <fieldset style="height:180px;margin:8px;border:solid;">
+
+                    <legend><label style="font-size: x-large;text-align:center"> Seat Information</label></legend>
+
+                    <table>
+                        <tr>
+                            <td style="width:150px"></td>
+                            <td style="width: 35px; height: 35px; background-color: #4CAF50; border-radius: 12px; border: none;"></td>
+                            <td><label>Available Seats</label> </td>
+                            <td style="width:45px"></td>
+                            <td style="width: 35px; height: 35px; background-color: orange; border-radius: 12px; border: none;"></td>
+                            <td><label> Selected Seats</label></td>
+                            <td style="width:45px"></td>
+                            <td style="width: 35px; height: 35px; background-color: #f44336; border-radius: 12px; border: none; "></td>
+                            <td><label> Already Sold</label></td>
+
+                        </tr>
+                    </table>
+                    <table id="myTable" style="border: ridge; border-color: #12b7b7;">
+                        <tr>
+                            <td>
+                                hi
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </fieldset>
+
+                <fieldset style="margin: 8px;border:solid;">
+
+                    <legend><label style="font-size:x-large"> Personal Information</label></legend>
+
+                    @using (Html.BeginForm("Save", "Booking", FormMethod.Post, new { @class = "agile_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        @Html.HiddenFor(m => m.Id)
+
+                        <input type="hidden" value="" name="selectedSeats" id="selectedSeats" />
+                        <table style="height: 90%">
+                            <tr class="country">
+                                <td>@Html.LabelFor(m => m.Name, new { @style = "width:80px;margin:10px" })</td>
+                                <td>@Html.TextBoxFor(m => m.Name, new { @style = "width:250px;margin:10px" })</td>
+
+                                <td>@Html.LabelFor(m => m.Mobile, new { @style = "width:80px;margin:10px" })</td>
+                                <td>@Html.TextBoxFor(m => m.Mobile, new { @style = "width:250px;margin:10px" })</td>
+                            </tr>
+                            <tr class="country">
+                                <td> @Html.LabelFor(m => m.Gender, new { @style = "width:80px;margin:10px" })</td>
+                                <td> @Html.DropDownListFor(m => m.Gender, gender, "    - - - Please Select - - -    ", new { @style = "width:277px;margin:10px" })</td>
+
+                                <td> @Html.LabelFor(m => m.Age, new { @style = "width:80px;margin:10px" })</td>
+                                <td> @Html.TextBoxFor(m => m.Age, new { @style = "width:250px;margin:10px" })</td>
+                            </tr>
+                        </table>
+                        <table style="height: 90%">
+                            <tr class="country">
+                                <td style="width:148px">
+                                    @Html.LabelFor(m => m.Address, new { @style = "width:250px;margin:10px" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Address, new { @style = "width:686px;margin:10px" })
+
+                                </td>
+
+                            </tr>
+                        </table>
+                        <table style="height: 90%">
+                            <tr class="country">
+                                <td>@Html.LabelFor(m => m.NID, new { @style = "width:80px;margin:10px" })</td>
+                                <td>@Html.TextBoxFor(m => m.NID, new { @style = "width:250px;margin:10px" })</td>
+
+                                <td>@Html.LabelFor(m => m.Nationality, new { @style = "width:80px;margin:15px" })</td>
+                                <td>@Html.DropDownListFor(m => m.Nationality, nationality, "    - - - Please Select - - -    ", new { @style = "width:277px;margin:10px" })</td>
+                            </tr>
+                            <tr class="country">
+                                <td>
+                                    <label style="width: 80px; margin: 10px">Boarding Point:</label>
+                                </td>
+                                <td>
+                                    @Html.DropDownList("boardingPoint", ViewBag.boardingPoint as SelectList, "    - - - Please Select - - -    ", new { @style = "width:277px;margin:10px" })
+
+                                </td>
+
+                                <td>
+                                    <label style="width: 80px; margin: 15px">Dropping Point:</label>
+                                </td>
+                                <td>
+                                    @Html.DropDownList("droppingPoint", ViewBag.boardingPoint as SelectList, "    - - - Please Select - - -    ", new { @style = "width:277px;margin:10px" })
+                                </td>
+                            </tr>
+
+                            <tr class="country">
+                                <td><label style="width: 80px; margin: 10px">Payment Method:</label></td>
+                                <td>
+                                    @Html.DropDownList("payment", payment, "    - - - Please Select - - -    ", new { @style = "width:277px;margin:10px" })
+                                </td>
+                            </tr>
+
+                        </table>
+                        <div class="submit">
+                            <input id="myBtn" type="submit" onclick="DisableButton()" value="CONFIRM" />
+                        </div>
+
+                    }
+
+                </fieldset>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+
+<script>
+
+    var count = [];
+   
+    var fare = 0;
+    var total = 0;
+    var perSeatFare = parseInt(document.getElementById('perSeatFare').value);
+    var reservation = "";
+
+    function ChangeColor(btn) {
+
+        if (count[btn] == 0) {
+            document.getElementById(btn).style.backgroundColor = "#4CAF50"
+            count[btn] = 1;
+            
+            fare -= perSeatFare;
+            total--;
+            calculateTotal();
+            netTotal();
+            minimize();
+
+            if (fare == 0) {
+                hide();
+            }
+        }
+        else {
+            document.getElementById(btn).style.backgroundColor = "orange"
+            count[btn] = 0;
+         
+            total++;
+            fare += perSeatFare;
+            calculateTotal();
+            netTotal();
+            minimize();
+            createTable();
+           
+        }
+     
+    }
+
+    function DisableButton() {
+        var m = 0;
+
+        for (i = 0; i < 105; i++) {
+            if (count[i] == 0) {
+                document.getElementById(i).style.backgroundColor = "#f44336"
+                reservation = reservation + document.getElementById(i).value + " ";
+                //   selectedSeats = document.getElementById(i).value;
+                document.getElementById(i).disabled = true;
+                m++;
+            }
+        }
+        for (j = 0; j < m; j++) {
+
+            $("#selectedSeats").val(reservation);
+        }
+        alert("Reservation Successful!!");
+    }
+
+
+
+    function calculateTotal() {
+
+        var sh = document.getElementById('showFare');
+        document.getElementById('showFare').innerHTML = fare;
+        sh.style.display = 'block';
+
+    }
+    function netTotal() {
+        var nt = document.getElementById('netFare');
+        document.getElementById('netFare').innerHTML = fare;
+        nt.style.display = 'block';
+    }
+   
+    function minimize() {
+
+        var showTotal = document.getElementById('showTotal');
+        document.getElementById('showTotal').innerHTML = total;
+        showTotal.style.display = 'block';
+
+    }
+
+    function hide() {
+       
+        var sf = document.getElementById('showFare');
+        sf.style.display = 'none';
+
+        var st = document.getElementById('showTotal');
+        st.style.display = 'none';
+
+    }
+    function createTable(){
+        var table = document.getElementById("myTable");
+        var row = table.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = "NEW CELL1";
+        cell2.innerHTML = "NEW CELL2";
+    }
+   
+
+
+</script>
+
+
+}

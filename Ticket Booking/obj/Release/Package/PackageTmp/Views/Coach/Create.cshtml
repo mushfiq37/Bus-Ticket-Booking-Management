@@ -1,0 +1,32 @@
+﻿@model Ticket_Booking.Models.CoachModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section bodypage{
+<body class="bg agileinfo">
+    <h1 class="agile-head text-center">Add Coach Type</h1>
+    <div class="container-w3">
+        <div class="form_w3layouts" style="">
+
+            @using (Html.BeginForm("Save", "Coach", FormMethod.Post, new { @class = "agile_form" }))
+            {
+                @Html.HiddenFor(m => m.Id)
+                <table style="">
+                    <tr>
+                        <td> @Html.LabelFor(m => m.CoachType)</td>
+                        <td>@Html.TextBoxFor(m => m.CoachType, new { @style = "width:275px;margin:10px" })</td>
+                    </tr>
+                </table>
+                <div class="submit">
+                    <input type="submit" value="ADD" />
+                </div>
+            }
+        </div>
+    </div>
+
+    </body>
+
+ }

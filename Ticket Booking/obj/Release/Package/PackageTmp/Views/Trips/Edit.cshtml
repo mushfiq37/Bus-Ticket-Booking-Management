@@ -1,0 +1,73 @@
+﻿@model Ticket_Booking.Models.TripsModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<body class="bg agileinfo">
+    <h1 class="agile-head text-center">Edit Trip</h1>
+
+    <div class="container-w3">
+        <div class="content-1-w3layouts">
+            <img src="/Content/Images/trip.png" alt="room" />
+        </div>
+        <div class="form_w3layouts">
+
+            @using (Html.BeginForm("Edit", "Trips", new { @class = "agile_form" }))
+            {
+                @Html.HiddenFor(m => m.Id)
+                <table style="margin:15px;margin-left:55px;">
+                    <tr>
+                        <td> @Html.LabelFor(m => m.CoachNo)</td>
+                        <td style="margin:20px"> @Html.TextBoxFor(m => m.CoachNo, new { @style = "width:275px;margin:10px" })</td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(m => m.NumberOfSeat) </td>
+                        <td>@Html.TextBoxFor(m => m.NumberOfSeat, new { @style = "width:275px;margin:10px" })</td>
+                    </tr>
+
+                    <tr class="country">
+                        <td>@Html.LabelFor(m => m.RouteFrom)</td>
+                        <td>@Html.DropDownListFor(m => m.RouteFrom, ViewBag.placeName as SelectList, "Select Starting Point", new { @style = "width:275px;margin:10px" })</td>
+                    </tr>
+
+                    <tr class="country">
+                        <td>@Html.LabelFor(m => m.RouteTo)</td>
+                        <td>@Html.DropDownListFor(m => m.RouteTo, ViewBag.placeName as SelectList, "Select Dropping Point", new { @style = "width:275px;margin:10px" })</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.DepartureTime)</td>
+                        <td>@Html.TextBoxFor(m => m.DepartureTime, new { type = "datetime-local", @style = "width:275px;margin:10px" })</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.ArrivalTime)</td>
+                        <td>@Html.TextBoxFor(m => m.ArrivalTime, new { type = "datetime-local", @style = "width:275px;margin:10px" })</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.Fare)</td>
+                        <td>@Html.TextBoxFor(m => m.Fare, new { @style = "width:275px;margin:10px" })</td>
+                    </tr>
+                    <tr class="country">
+                        <td> @Html.LabelFor(m => m.CoachType)</td>
+                        <td>@Html.DropDownListFor(m => m.CoachType, ViewBag.coachType as SelectList, "Select Coach Type", new { @style = "width:275px;margin:10px" })</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.NoOfSeatPerRow)</td>
+                        <td>@Html.TextBoxFor(m => m.NoOfSeatPerRow, new { @style = "width:275px;margin:10px" })</td>
+                    </tr>
+
+
+                </table>
+                <div class="submit">
+                    <input type="submit" value="EDIT" />
+                </div>
+            }
+        </div>
+    </div>
+
+    <div>
+        @Html.ActionLink("Back", "Index")
+    </div>
+    </body>
+

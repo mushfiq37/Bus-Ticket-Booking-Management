@@ -1,0 +1,34 @@
+﻿@model Ticket_Booking.Models.LocationModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<html>
+
+<body class="bg agileinfo" style="width:100%">
+    <h1 class="agile-head text-center">Add New Location</h1>
+ 
+        <div class="container-w3">
+
+            <div class="form_w3layouts">
+
+                @using (Html.BeginForm("Save", "Location", FormMethod.Post, new { @class = "agile_form" }))
+                {
+                    @Html.HiddenFor(m => m.Id)
+                    <table style="margin:15px;margin-left:55px;">
+                        <tr>
+                            <td style="text-align:left"> @Html.LabelFor(m => m.PlaceName)</td>
+                            <td style="text-align: left">@Html.TextBoxFor(m => m.PlaceName, new { @style = "width:275px;margin:10px" })</td>
+                        </tr>
+                    </table>
+                    <div class="submit">
+                        <input type="submit" value="ADD" />
+                    </div>
+                }
+            </div>
+        </div>
+
+</body>
+</html>

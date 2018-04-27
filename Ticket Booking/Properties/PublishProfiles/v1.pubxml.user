@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>F:\server</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>07/10/2017 13:44:56</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>07/10/2017 13:44:56</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/10/2017 11:50:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>07/10/2017 11:50:52</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>07/10/2017 11:50:49</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>07/10/2017 11:50:51</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>07/10/2017 11:50:51</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>07/10/2017 11:50:51</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>07/10/2017 11:50:51</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>07/10/2017 11:50:51</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>07/10/2017 11:50:51</publishTime>
+    </File>
+    <File Include="bin/Ticket Booking.dll">
+      <publishTime>07/21/2017 15:21:38</publishTime>
+    </File>
+    <File Include="Content/Images/1.jpg">
+      <publishTime>07/19/2017 13:15:34</publishTime>
+    </File>
+    <File Include="Content/Images/2.jpg">
+      <publishTime>07/19/2017 13:15:56</publishTime>
+    </File>
+    <File Include="Content/Images/a.png">
+      <publishTime>07/19/2017 13:15:56</publishTime>
+    </File>
+    <File Include="Content/Images/arrow1.png">
+      <publishTime>07/19/2017 13:15:56</publishTime>
+    </File>
+    <File Include="Content/Images/b.png">
+      <publishTime>07/19/2017 13:15:56</publishTime>
+    </File>
+    <File Include="Content/Images/date-icon.png">
+      <publishTime>07/19/2017 13:15:56</publishTime>
+    </File>
+    <File Include="Content/Images/gl1.jpg">
+      <publishTime>07/20/2017 15:54:03</publishTime>
+    </File>
+    <File Include="Content/Images/gl2.jpg">
+      <publishTime>07/20/2017 15:58:30</publishTime>
+    </File>
+    <File Include="Content/Images/gl3.jpg">
+      <publishTime>07/20/2017 15:57:13</publishTime>
+    </File>
+    <File Include="Content/Images/trip.png">
+      <publishTime>07/19/2017 15:21:51</publishTime>
+    </File>
+    <File Include="Content/index.html">
+      <publishTime>07/19/2017 12:48:05</publishTime>
+    </File>
+    <File Include="Content/jquery-1.11.1.min.js">
+      <publishTime>07/19/2017 12:47:40</publishTime>
+    </File>
+    <File Include="Content/jquery-ui.css">
+      <publishTime>07/19/2017 12:47:18</publishTime>
+    </File>
+    <File Include="Content/jquery-ui.js">
+      <publishTime>07/19/2017 12:47:48</publishTime>
+    </File>
+    <File Include="Content/style.css">
+      <publishTime>07/20/2017 17:06:34</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/10/2017 11:50:42</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/21/2017 15:02:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.js">
+      <publishTime>07/18/2017 11:28:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.min.js">
+      <publishTime>07/18/2017 11:28:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.min.map">
+      <publishTime>07/18/2017 11:28:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.slim.js">
+      <publishTime>07/18/2017 11:28:11</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.slim.min.js">
+      <publishTime>07/18/2017 11:28:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.slim.min.map">
+      <publishTime>07/18/2017 11:28:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>07/21/2017 15:02:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>07/21/2017 15:02:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>07/21/2017 14:29:38</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>07/21/2017 14:29:38</publishTime>
+    </File>
+    <File Include="Views/Booking/FrontLayout.cshtml">
+      <publishTime>07/20/2017 17:19:22</publishTime>
+    </File>
+    <File Include="Views/Coach/Create.cshtml">
+      <publishTime>07/21/2017 11:54:22</publishTime>
+    </File>
+    <File Include="Views/Coach/Edit.cshtml">
+      <publishTime>07/20/2017 12:00:23</publishTime>
+    </File>
+    <File Include="Views/Coach/Index.cshtml">
+      <publishTime>07/20/2017 14:28:03</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>07/20/2017 16:26:01</publishTime>
+    </File>
+    <File Include="Views/Location/Create.cshtml">
+      <publishTime>07/21/2017 11:53:44</publishTime>
+    </File>
+    <File Include="Views/Location/Edit.cshtml">
+      <publishTime>07/20/2017 11:58:51</publishTime>
+    </File>
+    <File Include="Views/Location/Index.cshtml">
+      <publishTime>07/20/2017 14:27:05</publishTime>
+    </File>
+    <File Include="Views/Shared/_MasterLayout.cshtml">
+      <publishTime>07/21/2017 14:29:38</publishTime>
+    </File>
+    <File Include="Views/Trips/Create.cshtml">
+      <publishTime>07/21/2017 13:59:04</publishTime>
+    </File>
+    <File Include="Views/Trips/Edit.cshtml">
+      <publishTime>07/20/2017 11:24:43</publishTime>
+    </File>
+    <File Include="Views/Trips/Index.cshtml">
+      <publishTime>07/20/2017 14:21:13</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>07/21/2017 14:29:38</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>07/19/2017 17:07:13</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/21/2017 15:21:44</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

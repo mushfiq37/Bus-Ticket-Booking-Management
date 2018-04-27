@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Ticket_Booking.Models.TripsModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<head>
+    <title>Stytlish Search Forms Responsive Widget Template | Home :: w3layouts</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Stytlish Search Forms Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="/Content/SearchCSS/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href='//fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+</head>
+
+@section bodypage{
+    <div class="agile-head" style="border: ridge; border-color: #12b7b7;margin:15px;">
+        <div class="col-sm-12" style="margin:25px">
+            <h2 class="lined-heading" style="text-align:center"><label> Welcome To GreenLine</label></h2>
+            <p><label>
+                Green Line Paribahan is apparently a family owned transport company specializing in
+                transportation of passenger bus services since 1990. From a humble beginning of
+                local services, our transport system encompasses all reachable areas of Bangladesh
+                and also beyond the border, extending our reach to Kolkata in India.
+            </label></p>
+
+            <p><label>
+                We worked hard and honest, we put our vision forward and explored ways and means
+                to continuously improve passenger comfort, and as a result, we were able to
+                introduce the 1st ever Air- Conditioned bus services in Bangladesh. We take
+                pride in mentioning that our fleet of buses includes the most luxurious models
+                of VOLVO and SCANIA Imported from Europe, which provide the ultimate in passenger
+                comfort and safety.
+            </label></p>
+
+            <p><label>
+                The company at present operates more then 60 (Sixty) buses on schedule routes
+                employing over 200 trained staff and safely transporting over a million passengers a
+                year
+            </label></p>
+        </div>
+
+    </div>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    @using (Html.BeginForm("Search", "Trips", FormMethod.Get, new { @class = "agile_form" }))
+    {
+        <div class="search-two">
+
+            @Html.DropDownList("RouteFrom", ViewBag.placeName as SelectList, "- - Departing From - -")
+            @Html.DropDownList("RouteTo", ViewBag.placeName as SelectList, "- - Destination - -")
+            @Html.DropDownList("CoachType", ViewBag.coachType as SelectList, "- - Coach Type - -")
+
+            <input type="submit" value="Search">
+            <div class="clear"></div>
+
+        </div>
+    }
+
+    <div class="w3-content w3-section container-w3 content-1-w3layouts" style="max-width:850px">
+
+        <img class="mySlides w3-animate-fading" src="/Content/Images/gl1.jpg" >
+        <img class="mySlides w3-animate-fading" src="/Content/Images/gl2.jpg" >
+        <img class="mySlides w3-animate-fading" src="/Content/Images/gl3.jpg" >
+
+    </div>
+
+
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 9000);
+        }
+    </script>
+}

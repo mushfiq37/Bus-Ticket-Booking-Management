@@ -1,0 +1,171 @@
+﻿
+@{
+    ViewBag.Title = "MasterLayout";
+}
+<!DOCTYPE html>
+
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #4CAF50;
+    }
+
+    li {
+        float: left;
+        border-right: 1px solid #bbb;
+    }
+
+        li:last-child {
+            border-right: none;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+            li a:hover:not(.active) {
+                background-color: #0d7412;
+            }
+
+    .active {
+        background-color: #4CAF50;
+    }
+
+    img {
+        border-radius: 8px;
+    }
+
+    .buttonl {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin:25px;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius:12px;
+        width:130px;
+        height:50px;
+    }
+
+    .button1 {
+        background-color: #4CAF50;
+        color: white;
+        border: 2px solid #4CAF50;
+    }
+
+        .button1:hover {
+            background-color: white;
+            color:black;
+        }
+
+</style>
+
+<html>
+<head>
+    <title>Ticket Booking</title>
+    <!-- custom-theme -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //custom-theme -->
+    <script type="text/javascript" src="/Content/jquery-1.11.1.min.js"></script>
+    <script src='@Url.Content("~/Scripts/jquery-1.8.2.js")' type='text/javascript'></script>
+    <script src='@Url.Content("~/Scripts/jquery.validate.js")' type='text/javascript'>         </script>
+    <script src='@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")' type='text/javascript'></script>
+    <link href=@Url.Content("/Content/style.css") rel="stylesheet" type="text/css" media="all" />
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+</head>
+<body class="bg agileinfo">
+    <header>
+        <div class="panel panel-default" style="">
+            <div class="logoBox" style="float: left; margin: 5px; display: block;">
+                <img src="/Content/Images/busLogo.png" onclick="" alt="Paris" width="600" height="80" />
+            </div>
+            <div class="loginBox" style="float:right;margin-right:25px;">
+                
+                @if (global.logged == 0) { 
+                    
+                     <button class="buttonl button1" onclick="loginClick()">log in</button>
+                
+                }
+                else if (global.logged == 1)
+                {
+                    
+                     <button class="buttonl button1" onclick="logout()" >log out</button>
+                }
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br/>
+        <div class="panel-body">
+            @if (global.logged == 1) { 
+                
+            <div class="navigation">
+                <ul style="list-style-type: none; margin: 10px; padding: 2px; overflow: hidden;">
+                    <li style=" float: left;"><a href="@Url.Action("Index","Home")" style="display: block; text-align: center; padding: 14px 16px; text-decoration: none;">Home</a></li>
+                    <li style=" float: left;"><a href="@Url.Action("Index","Trips")" style="display: block; text-align: center; padding: 14px 16px; text-decoration: none;">Trips</a></li>
+                    <li style=" float: left;"><a href="@Url.Action("Index","Location")" style="display: block;text-align: center;padding: 14px 16px; text-decoration: none;">Location</a></li>
+                    <li style=" float: left;"><a href="@Url.Action("Index","Coach")" style="display: block;text-align: center; padding: 14px 16px;text-decoration: none;">Coach Type</a></li>
+                </ul>
+            </div>
+                
+            }
+
+        </div>
+    </header>
+
+    <section>
+
+        @RenderSection("bodypage", required: false)
+        @RenderBody()
+
+    </section>
+
+    <div style="text-align: center; vertical-align: middle;">
+        <br/>
+        <br/>
+        <p style="color: #dcffff">WE ACCEPT</p>
+
+        <img src="https://s3.amazonaws.com/busbdimages/bank_logo.png" alt="" style="width:1100px;height:56px;">
+
+    </div>
+
+    <footer class=" footer">
+        <h6 style="text-align: center; margin: 10px; background-color: #4CAF50; height: 25px; position:inherit">Copyright : Datagrid Limited</h6>
+    </footer>
+
+</body>
+</html>
+
+<script>
+
+    function loginClick() {
+
+          location.href = '@Url.Action("Login", "Register")';
+    }
+       
+    function logout() {
+           
+          
+          location.href = '@Url.Action("Index", "Home")';
+        
+    }         
+
+</script>

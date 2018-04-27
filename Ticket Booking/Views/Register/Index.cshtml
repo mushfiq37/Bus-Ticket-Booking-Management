@@ -1,0 +1,113 @@
+﻿@model Ticket_Booking.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Register</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Ideal Sign in Form a Flat Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <!--//Meta tag Keywords -->
+    <link href="/Content/LoginCSS/style.css" rel="stylesheet"><!--style-css-->
+    <link rel="stylesheet" href="/Content/LoginCSS/font-awesome.min.css"><!--fontawesome-css-->
+    <link href="//fonts.googleapis.com/css?family=Marcellus+SC" rel="stylesheet"><!--online-fonts-->
+    <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet"><!--online-fonts-->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"><!--online-fonts-->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+
+    <section class="agile-w3ls">
+        <br />
+        <br />
+        <div class="header-w3ls">
+            <h1 style="text-align:center;">Register Form</h1>
+        </div>
+        <div class="headermain-w3ls">
+            <div class="header-form">
+                
+                @using (Html.BeginForm("Save", "Register", FormMethod.Post, new { @class = "agile_form" }))
+                {
+                     @Html.ValidationSummary(true) 
+
+                        @Html.HiddenFor(m => m.Id)
+                    
+                        <table style="margin:15px;margin-left:55px;">
+                            <tr>
+                                <td style="text-align:left"> @Html.LabelFor(m => m.Name, new { @style = "font-size: 18px;font-weight: 600;color: #fff;font-family: 'Poiret One', cursive;" })</td>
+                                <td style="text-align: left"> @Html.TextBoxFor(m => m.Name, new { @style = "width:275px;margin:10px" })</td>
+                                <td style="font-family: 'Poiret One', cursive;color:red">@Html.ValidationMessageFor(m=>m.Name)</td>
+                            </tr>
+
+                            <tr>
+                                <td style="text-align:left">@Html.LabelFor(m => m.UserName, new { @style = "font-size: 18px;font-weight: 600;color: #fff;font-family: 'Poiret One', cursive;" }) </td>
+                                <td>@Html.TextBoxFor(m => m.UserName, new { @style = "width:275px;margin:10px" })</td>
+                                <td style="font-family: 'Poiret One', cursive;color:red">@Html.ValidationMessageFor(m => m.UserName)</td>
+                            </tr>
+
+                            <tr>
+                                <td style="text-align:left">@Html.LabelFor(m => m.Password, new { @style = "font-size: 18px;font-weight: 600;color: #fff;font-family: 'Poiret One', cursive;" })</td>
+                                <td style="text-align: left">@Html.TextBoxFor(m => m.Password, new { @style = "width:275px;margin:10px" })</td>
+                                <td style="font-family: 'Poiret One', cursive;color:red">@Html.ValidationMessageFor(m => m.Password)</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left">@Html.LabelFor(m => m.Email, new { @style = "font-size: 18px;font-weight: 600;color: #fff;font-family: 'Poiret One', cursive;" })</td>
+                                <td style="text-align: left">@Html.TextBoxFor(m => m.Email, new { @style = "width:275px;margin:10px" })</td>
+                                <td style="font-family: 'Poiret One', cursive;color:red">@Html.ValidationMessageFor(m => m.Email)</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left">@Html.LabelFor(m => m.Address, new { @style = "font-size: 18px;font-weight: 600;color: #fff;font-family: 'Poiret One', cursive;" })</td>
+                                <td style="text-align: left">@Html.TextBoxFor(m => m.Address, new { @style = "width:275px;margin:10px" })</td>
+                                <td style="font-family: 'Poiret One', cursive;color:red">@Html.ValidationMessageFor(m => m.Address)</td>
+                            </tr>
+
+                            <tr>
+                                <td style="text-align:left">@Html.LabelFor(m => m.Mobile, new { @style = "font-size: 18px;font-weight: 600;color: #fff;font-family: 'Poiret One', cursive;" })</td>
+                                <td style="text-align: left">@Html.TextBoxFor(m => m.Mobile, new { @style = "width:275px;margin:10px" })</td>
+                                <td style="font-family: 'Poiret One', cursive;color:red">@Html.ValidationMessageFor(m => m.Mobile)</td>
+                            </tr>
+                            </table>
+                    
+                            <div class="clear"></div>
+                    
+                            <div class="signin-w3ls">
+                                <input type="submit" value="Register">
+
+                            </div>
+                        
+
+                }
+               
+
+                @if (TempData["Success"] != null)
+                {
+                    <div class="green">
+                        <p><strong>Success:</strong> @TempData["Success"].ToString()</p>
+                    </div>
+                }
+
+            <!--copyright-->
+            <div class="agile-copyright">
+                <footer><a>All Rights Reserved & Designed by Datagrid Limited</a></footer>
+            </div>
+            <!--/section-->
+        </div>
+            </div>
+    </section>
+
+</body>
+</html>

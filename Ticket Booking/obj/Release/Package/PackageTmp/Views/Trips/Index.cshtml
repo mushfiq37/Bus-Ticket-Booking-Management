@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<style type="text/css">
+    .webgrid-table {
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        width: 1300px;
+        display: table;
+        border-collapse: collapse;
+        border: solid px #C5C5C5;
+        background-color: white;
+    }
+
+        .webgrid-table td, th {
+            border: 1px solid #C5C5C5;
+            padding: 3px 7px 2px;
+        }
+
+    .webgrid-header, .webgrid-header a {
+        background-color: #0094ff;
+        color: #ffffff;
+        text-align: left;
+        text-decoration: none;
+    }
+
+    .webgrid-footer {
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: azure;
+        padding: 3px 7px 2px;
+    }
+
+    .col1Width {
+        width: 55px;
+    }
+
+    .col2Width {
+        width: 220px;
+    }
+
+    td {
+        width: 20px;
+        height: 15px;
+        margin: 1px;
+    }
+</style>
+
+@{
+    ViewBag.Title = "";
+    var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 10);
+    grid.Pager(WebGridPagerModes.All);
+}
+
+@section bodypage{
+    <body class="bg ">
+   
+                <fieldset>
+
+                    <div class="button" style="margin-left:20px">
+                        <input type="button" value="ADD TRIP" onclick="Click()"/>
+                    </div>
+
+                    <div id="gridContent" style="font-family: Arial; padding: 20px;">
+                        @grid.GetHtml(tableStyle: "webgrid-table",
+                   headerStyle: "webgrid-header",
+                   footerStyle: "webgrid-footer",
+                   alternatingRowStyle: "webgrid-alternating-row",
+                   selectedRowStyle: "webgrid-selected-row",
+                   rowStyle: "webgrid-row-style",
+            columns: grid.Columns(
+                                //    grid.Column(columnName: "Id", header: "ID"),
+                                //   grid.Column("Coach Number", format: (item) => item.GetSelectLink(item.CoachNo)),
+                  grid.Column(header: "Coach Number", format: (item) =>
+                     {
+                         var link = Html.ActionLink(((string)item.CoachNo), "Index", "Booking", new { id = item.Id }, null);
+                         return link;
+                     }),
+                    grid.Column(columnName: "location.PlaceName", header: "Starting Point"),
+                    grid.Column(columnName: "location2.PlaceName", header: "Destination"),
+                    grid.Column(columnName: "NumberOfSeat", header: "Total Seats"),
+                    grid.Column(columnName: "DepartureTime", header: "Departure time"),
+                    grid.Column(columnName: "ArrivalTime", header: "Arrival Time"),
+                    grid.Column(columnName: "Fare", header: "Ticket Price"),
+                    grid.Column(columnName: "coach.CoachType", header: "Coach Type"),
+                    grid.Column(header: "Edit", format: (item) =>
+                     {
+                         var link = Html.ActionLink("Edit", "Edit", new { id = item.Id });
+                         return link;
+                     }),
+                   grid.Column(header: "Delete", format: (item) =>
+                   {
+                       var link = Html.ActionLink("Delete", "Delete", new { id = item.Id });
+                       return link;
+                   })
+
+            ))
+
+
+                    </div>
+                </fieldset>
+
+                <script>
+                    function Click() {
+
+                        location.href = '@Url.Action("Create", "Trips")';
+                    }
+
+                </script>
+
+               
+
+
+    </body>
+}
+
+

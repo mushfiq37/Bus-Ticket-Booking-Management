@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section bodypage{
+    <div class="agile-head" style="border: ridge; border-color: #12b7b7;margin:15px;">
+        <div class="col-sm-12" style="margin:25px">
+            <h2 class="lined-heading" style="text-align:center"><label> Welcome To GreenLine</label></h2>
+            <p><label>
+                Green Line Paribahan is apparently a family owned transport company specializing in
+                transportation of passenger bus services since 1990. From a humble beginning of
+                local services, our transport system encompasses all reachable areas of Bangladesh
+                and also beyond the border, extending our reach to Kolkata in India.
+            </label></p>
+
+            <p><label>
+                We worked hard and honest, we put our vision forward and explored ways and means
+                to continuously improve passenger comfort, and as a result, we were able to
+                introduce the 1st ever Air- Conditioned bus services in Bangladesh. We take
+                pride in mentioning that our fleet of buses includes the most luxurious models
+                of VOLVO and SCANIA Imported from Europe, which provide the ultimate in passenger
+                comfort and safety.
+            </label></p>
+
+            <p><label>
+                The company at present operates more then 60 (Sixty) buses on schedule routes
+                employing over 200 trained staff and safely transporting over a million passengers a
+                year
+            </label></p>
+        </div>
+
+    </div>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <div class="w3-content w3-section container-w3 content-1-w3layouts" style="max-width:850px">
+
+        <img class="mySlides w3-animate-fading" src="/Content/Images/gl1.jpg" >
+        <img class="mySlides w3-animate-fading" src="/Content/Images/gl2.jpg" >
+        <img class="mySlides w3-animate-fading" src="/Content/Images/gl3.jpg" >
+
+    </div>
+
+
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 9000);
+        }
+    </script>
+}

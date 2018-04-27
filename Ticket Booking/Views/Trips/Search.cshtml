@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<style type="text/css">
+    
+    .webgrid-table {
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        width: 1300px;   
+        display: table;
+        border-collapse: collapse;
+        border: solid px #C5C5C5;
+        background-color: white;
+    }
+
+        .webgrid-table td, th {
+            border: 1px solid #C5C5C5;
+            padding: 3px 7px 2px;
+            height:27px;
+            text-align:center;
+            
+        }
+
+    .webgrid-header, .webgrid-header a {
+        background-color: #0094ff;
+        color: #ffffff;
+        text-align: left;
+        height:35px;
+        text-decoration: none;
+    }
+
+    .webgrid-footer {
+    }
+
+    .webgrid-row-style {
+        padding: 3px 7px 2px;
+    }
+
+    .webgrid-alternating-row {
+        background-color: azure;
+        padding: 3px 7px 2px;
+    }
+
+    .col1Width {
+        width: 55px;
+    }
+
+    .col2Width {
+        width: 220px;
+    }
+
+    td {
+        width: 20px;
+        height: 15px;
+        margin: 1px;
+    }
+</style>
+
+@{
+    ViewBag.Title = "";
+    var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 10);
+    grid.Pager(WebGridPagerModes.All);
+}
+
+<head>
+    <title>Stytlish Search Forms Responsive Widget Template | Home :: w3layouts</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Stytlish Search Forms Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="/Content/SearchCSS/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href='//fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+</head>
+
+@section bodypage{
+    <body class="bg ">
+
+        <fieldset>
+
+            @if (global.logged == 1) {
+
+            <div id="gridContent" style="font-family: Arial; padding: 20px;">
+                @grid.GetHtml(tableStyle: "webgrid-table",
+                       headerStyle: "webgrid-header",
+                       footerStyle: "webgrid-footer",
+                       alternatingRowStyle: "webgrid-alternating-row",
+                       selectedRowStyle: "webgrid-selected-row",
+                       rowStyle: "webgrid-row-style",
+                      columns: grid.Columns(
+                        //    grid.Column(columnName: "Id", header: "ID"),
+                        //   grid.Column("Coach Number", format: (item) => item.GetSelectLink(item.CoachNo)),
+                      grid.Column(header: "Coach Number", format: (item) =>
+                         {
+                             var link = Html.ActionLink(((string)item.CoachNo), "Index", "Booking", new { id = item.Id }, null);
+                             return link;
+                         }),
+                        grid.Column(columnName: "location.PlaceName", header: "Starting Point"),
+                        grid.Column(columnName: "location2.PlaceName", header: "Destination"),
+                        grid.Column(columnName: "NumberOfSeat", header: "Total Seats"),
+                        grid.Column(columnName: "DepartureTime", header: "Departure time"),
+                        grid.Column(columnName: "ArrivalTime", header: "Arrival Time"),
+                        grid.Column(columnName: "Fare", header: "Ticket Price"),
+                        grid.Column(columnName: "coach.CoachType", header: "Coach Type"),
+
+                        grid.Column(header: "Edit", format: (item) =>
+                         {
+                             var link = Html.ActionLink("Edit", "Edit", new { id = item.Id });
+                             return link;
+                         }),
+                       grid.Column(header: "Delete", format: (item) =>
+                       {
+                           var link = Html.ActionLink("Delete", "Delete", new { id = item.Id });
+                           return link;
+                       })
+                ))
+
+            </div>
+            }
+            else
+            {
+            <div id="gridContent" style="font-family: Arial; padding: 20px;">
+                @grid.GetHtml(tableStyle: "webgrid-table",
+                   headerStyle: "webgrid-header",
+                   footerStyle: "webgrid-footer",
+                   alternatingRowStyle: "webgrid-alternating-row",
+                   selectedRowStyle: "webgrid-selected-row",
+                   rowStyle: "webgrid-row-style",
+                  columns: grid.Columns(
+                        //    grid.Column(columnName: "Id", header: "ID"),
+                        //   grid.Column("Coach Number", format: (item) => item.GetSelectLink(item.CoachNo)),
+                  grid.Column(header: "Coach Number", format: (item) =>
+                     {
+                         var link = Html.ActionLink(((string)item.CoachNo), "Index", "Booking", new { id = item.Id }, null);
+                         return link;
+                     }),
+                    grid.Column(columnName: "location.PlaceName", header: "Starting Point"),
+                    grid.Column(columnName: "location2.PlaceName", header: "Destination"),
+                    grid.Column(columnName: "NumberOfSeat", header: "Total Seats"),
+                    grid.Column(columnName: "DepartureTime", header: "Departure time"),
+                    grid.Column(columnName: "ArrivalTime", header: "Arrival Time"),
+                    grid.Column(columnName: "Fare", header: "Ticket Price"),
+                    grid.Column(columnName: "coach.CoachType", header: "Coach Type")
+                                ))
+
+            </div>
+
+            }
+        </fieldset>
+        </body>
+}
